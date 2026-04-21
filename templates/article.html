@@ -1,0 +1,10 @@
+{{define "content"}}
+<article>
+    <h1>{{.Article.Title}}</h1>
+    <p class="meta">{{.Article.CreatedAt}} · {{.Article.Views}} views</p>
+    <div class="content">
+        {{.Article.Content}}
+    </div>
+    <a href="/">← Back to Home</a>
+</article>
+{{end}}
