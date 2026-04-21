@@ -1,34 +1,49 @@
 {{define "content"}}
-<section class="hero">
-    <h1>Welcome to My Site</h1>
-    <p>A collection of articles.</p>
+
+<!-- Featured article — light hero, no black banner -->
+<section class="hero-section">
+    <div class="hero-inner">
+        <div class="hero-label">Featured</div>
+        <h1 class="hero-title">The Future of Automation is Already Here</h1>
+        <p class="hero-excerpt">A deep dive into how modern automation tools are reshaping industries and what it means for the next generation of builders.</p>
+        <a href="/article/first-post" class="btn-readmore">Read article →</a>
+    </div>
 </section>
 
-<section class="subscribe">
-    <h2>Stay Updated</h2>
-    <p>Get notified when I publish new articles.</p>
-    {{if .SubscribeSuccess}}
-        <p class="success">You're subscribed! Thank you.</p>
-    {{else}}
-    <form action="/subscribe" method="POST">
-        <input type="email" name="email" placeholder="your@email.com" required>
-        <button type="submit">Subscribe</button>
-    </form>
-    {{if .SubscribeError}}
-        <p class="error">{{.SubscribeError}}</p>
-    {{end}}
-    {{end}}
-</section>
-
-<section class="articles">
-    <h2>Latest Articles</h2>
-    <ul>
-        {{range .Articles}}
-        <li>
-            <a href="/article/{{.Slug}}">{{.Title}}</a>
-            <span class="meta"> — {{.CreatedAt}}</span>
-        </li>
+<!-- Subscribe banner -->
+<section class="subscribe-banner">
+    <div class="subscribe-inner">
+        {{if .SubscribeSuccess}}
+            <p class="success-msg">✓ You're subscribed! Thank you.</p>
+        {{else}}
+        <p class="subscribe-tagline">Get new articles in your inbox</p>
+        <form action="/subscribe" method="POST" class="subscribe-form">
+            <input type="email" name="email" placeholder="your@email.com" required>
+            <button type="submit">Subscribe</button>
+        </form>
+        {{if .SubscribeError}}
+            <p class="error-msg">{{.SubscribeError}}</p>
         {{end}}
-    </ul>
+        {{end}}
+    </div>
 </section>
+
+<!-- Articles grid -->
+<section class="articles-section">
+    <div class="articles-inner">
+        <h2 class="section-title">Latest Articles</h2>
+        <div class="articles-grid">
+            {{range .Articles}}
+            <article class="article-card">
+                <div class="article-card-body">
+                    <a href="/article/{{.Slug}}" class="article-card-title">{{.Title}}</a>
+                    <p class="article-card-meta">{{.CreatedAt}}</p>
+                </div>
+                <a href="/article/{{.Slug}}" class="article-card-link">Read →</a>
+            </article>
+            {{end}}
+        </div>
+    </div>
+</section>
+
 {{end}}

@@ -1,10 +1,10 @@
 {{define "content"}}
-<article>
+<article class="single">
     <h1>{{.Article.Title}}</h1>
-    <p class="meta">{{.Article.CreatedAt}} · {{.Article.Views}} views</p>
-    <div class="content">
+    <p class="article-meta">{{.Article.CreatedAt}} &nbsp;·&nbsp; <span>{{.Article.Views}} views</span></p>
+    <div class="article-body">
         {{.Article.Content}}
     </div>
-    <a href="/">← Back to Home</a>
+    <a href="/" class="back-link">← Back to home</a>
 </article>
 {{end}}
